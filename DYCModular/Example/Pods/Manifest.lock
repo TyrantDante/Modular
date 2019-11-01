@@ -1,0 +1,16 @@
+PODS:
+  - DYCModular (0.1.0)
+
+DEPENDENCIES:
+  - DYCModular (from `../`)
+
+EXTERNAL SOURCES:
+  DYCModular:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  DYCModular: ab898924cb9fb74d76b82339f0874cb594cbea2c
+
+PODFILE CHECKSUM: 426e6252070259923045922c3679f45a2c2ee573
+
+COCOAPODS: 1.6.0

@@ -1,0 +1,22 @@
+{
+  "name": "DYCModular",
+  "version": "0.1.0",
+  "summary": "A short description of DYCModular.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/804054226@qq.com/DYCModular",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "804054226@qq.com": "daiyichao@souche.com"
+  },
+  "source": {
+    "git": "https://github.com/804054226@qq.com/DYCModular.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "DYCModular/Classes/**/*"
+}
