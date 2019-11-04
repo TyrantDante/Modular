@@ -15,6 +15,7 @@ DYCModularManager *instance = nil;
 @interface DYCModularManager()
 @property (nonatomic, strong) NSMutableDictionary *moduleMap;
 @property (nonatomic, assign) pthread_rwlock_t rw_lock;
+@property (nonatomic, strong) NSMutableDictionary *avaliableSchemes;
 @end
 
 @implementation DYCModularManager
@@ -53,6 +54,17 @@ DYCModularManager *instance = nil;
     return module;
 }
 
+- (void)addSchemes:(NSArray *)schemes {
+    for (NSString *scheme in schemes) {
+        [self.avaliableSchemes setValue:@"1" forKey:scheme];
+    }
+}
+
+- (void)removeSchemes:(NSArray *)schemes {
+    for (NSString *scheme in schemes) {
+        [self.avaliableSchemes removeObjectForKey:scheme];
+    }
+}
 
 - (void)staticSearchProtocol {
     unsigned int class_count;
@@ -67,6 +79,15 @@ DYCModularManager *instance = nil;
             }
         }
     }
+}
+
+- (id)openModuleWithPath:(NSString *)path params:(NSDictionary *)params {
+    NSURL *url = [NSURL URLWithString:path];
+    
+    if (![self.avaliableSchemes.allKeys containsObject:url.scheme]) {
+        return nil;
+    }
+    
 }
 
 @end

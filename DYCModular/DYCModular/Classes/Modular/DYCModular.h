@@ -20,6 +20,12 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)addModule:(DYCModule *)module;
 
 - (DYCModule *)getModule:(NSString *)moduleName;
+
+- (void)addSchemes:(NSArray *)schemes;
+
+- (void)removeSchemes:(NSArray *)schemes;
+
+- (id)openModuleWithPath:(NSString *)path params:(NSDictionary *)params;
 @end
 
 NS_ASSUME_NONNULL_END
