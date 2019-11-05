@@ -9,6 +9,8 @@
 #import <objc/runtime.h>
 #import <pthread.h>
 #import "DYCModule.h"
+#import "DYCURL.h"
+#import "DYCProtocol.h"
 
 DYCModularManager *instance = nil;
 
@@ -30,7 +32,8 @@ DYCModularManager *instance = nil;
 - (instancetype)init {
     if (self = [super init]) {
         _moduleMap = [[NSMutableDictionary alloc] init];
-        _rw_lock = PTHREAD_RWLOCK_INITIALIZER;
+        pthread_rwlockattr_t arr;
+        pthread_rwlock_init(&_rw_lock, pthread_attr_init(&arr));
     }
     return self;
 }
@@ -68,26 +71,115 @@ DYCModularManager *instance = nil;
 
 - (void)staticSearchProtocol {
     unsigned int class_count;
-    Class *classes =objc_copyClassList(&class_count);
+    Class *classes = objc_copyClassList(&class_count);
     
     for (unsigned int i = 0; i < class_count; ++ i) {
         Class clazz = classes[i];
         if (class_conformsToProtocol(clazz, @protocol(DYCModuleProtocol))) {
             if ([clazz respondsToSelector:@selector(exportModule)]) {
                 DYCModule *module_obj = [clazz exportModule];
+                if (module_obj.clazzName.length == 0) {
+                    module_obj.clazzName = NSStringFromClass(clazz);
+                }
                 [self addModule:module_obj];
             }
         }
     }
+    free(classes);
 }
 
 - (id)openModuleWithPath:(NSString *)path params:(NSDictionary *)params {
-    NSURL *url = [NSURL URLWithString:path];
-    
+    DYCURL *url = [[DYCURL alloc] initWithString:path];
     if (![self.avaliableSchemes.allKeys containsObject:url.scheme]) {
         return nil;
     }
     
+    
+    return nil;
 }
+
+- (id)openModuleWithUrlString:(NSString *)urlString {
+    DYCURL *url = [[DYCURL alloc] initWithString:urlString];
+    if (![self.avaliableSchemes.allKeys containsObject:url.scheme]) {
+        return nil;
+    }
+    NSArray<NSString *> *module_names = url.module_names;
+    NSString *module_method = url.module_method;
+    NSDictionary *module_param = url.module_param;
+    
+    NSMutableDictionary *result = [NSMutableDictionary dictionary];
+    for (NSString *module_name in module_names) {
+        DYCModule *module = [self getModule:module_name];
+        if (module) {
+            for (DYCProtocol *protocoo in module.protocols) {
+                if ([protocoo.function isEqualToString:module_method]) {
+                    if (protocoo.clazzName.length == 0) {
+                        protocoo.clazzName = module.clazzName;
+                    }
+                    id rr = [self openModuleWithProtocol:protocoo param:module_param];
+                    if (rr) {
+                        [result setValue:rr forKey:urlString];
+                    }
+                }
+            }
+        }
+    }
+    
+    return result;
+}
+
+
+- (id)openModuleWithProtocol:(DYCProtocol *)protocol param:(NSDictionary *)param {
+    Class clazz = NSClassFromString(protocol.clazzName);
+    SEL selector = NSSelectorFromString(protocol.selector);
+    NSMethodSignature *sig;
+
+    if ([clazz respondsToSelector:selector]) {
+        protocol.isClazzMethod = YES;
+        sig = [clazz methodSignatureForSelector:selector];
+    } else if ([[[clazz alloc] init] respondsToSelector:selector]) {
+        protocol.isClazzMethod = NO;
+        sig = [[[clazz alloc] init] methodSignatureForSelector:selector];
+    } else {
+        return nil;
+    }
+    NSInvocation *invoke = [[NSInvocation alloc] init];
+    invoke.selector = selector;
+    if (protocol.isClazzMethod) {
+        invoke.target = clazz;
+    } else {
+        id module = [[clazz alloc] init];
+        invoke.target = module;
+    }
+    [protocol.params enumerateObjectsUsingBlock:^(DYCParam * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        NSString *paramName = obj.name;
+        if (paramName.length == 0) {
+            return;
+        }
+        id paramValue = param[paramName];
+        NSUInteger index = idx + 2;
+        id formatValue = [obj formatValue:paramValue];
+        [invoke setArgument:(void *)formatValue atIndex:index];
+        
+    }];
+    
+    [invoke retainArguments];
+    [invoke invoke];
+
+    NSUInteger length = sig.methodReturnLength;
+    NSString *type = [NSString stringWithUTF8String:sig.methodReturnType];
+    if (length == 0) {
+        return nil;
+    }
+    if ([type isEqualToString:@"@"]) {
+        return nil;
+    }
+    void *buffer;
+    [invoke getReturnValue:&buffer];
+    return (__bridge id)(buffer);
+}
+
+
+
 
 @end

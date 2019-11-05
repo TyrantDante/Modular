@@ -10,9 +10,11 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface DYCProtocol : NSObject
-@property (nonatomic, strong) NSString *module;
-@property (nonatomic, strong) NSString *function;
-@property (nonatomic, strong) NSString *selector;
+@property (nonatomic, copy) NSString *module;
+@property (nonatomic, copy) NSString *function;
+@property (nonatomic, copy) NSString *selector;
+@property (nonatomic, copy) NSString *clazzName;
+@property (nonatomic, assign) BOOL isClazzMethod;
 @property (nonatomic, strong) NSArray<DYCParam *> *params;
 
 @end

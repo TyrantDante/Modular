@@ -13,6 +13,8 @@ typedef enum : NSUInteger {
     DYCParamTypeNone,
     DYCParamTypeString,
     DYCParamTypeNumber,
+    DYCParamTypeMap,
+    DYCParamTypeArray,
     DYCParamTypeObject,
     DYCParamTypeBlock,
 } DYCParamType;
@@ -20,6 +22,8 @@ typedef enum : NSUInteger {
 @interface DYCParam : NSObject
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, assign) DYCParamType type;
+
+- (id)formatValue:(id)value;
 @end
 
 NS_ASSUME_NONNULL_END

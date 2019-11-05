@@ -7,9 +7,4 @@
 
 #import "DYCProtocol.h"
 @implementation DYCProtocol
-
-- (BOOL)confirmProtocolWithOpenUrl:(NSString *)url {
-    return YES;
-}
-
 @end
