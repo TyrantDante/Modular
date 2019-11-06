@@ -11,8 +11,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface DYCModule : NSObject
 @property (nonatomic, copy) NSString *moduleName;
-@property (nonatomic, strong) NSArray<DYCProtocol *>* protocols;
+@property (nonatomic, readonly) NSArray<DYCProtocol *>* protocolList;
 @property (nonatomic, copy) NSString *clazzName;
+
+- (DYCModule *)name:(NSString *)name;
+
+- (DYCModule *)protocol:(DYCProtocol *)protocol;
 @end
 
 NS_ASSUME_NONNULL_END

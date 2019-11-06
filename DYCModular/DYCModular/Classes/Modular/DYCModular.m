@@ -131,7 +131,7 @@ DYCModularManager *instance = nil;
 
 - (id)openModuleWithProtocol:(DYCProtocol *)protocol param:(NSDictionary *)param {
     Class clazz = NSClassFromString(protocol.clazzName);
-    SEL selector = NSSelectorFromString(protocol.selector);
+    SEL selector = protocol.selector;
     NSMethodSignature *sig;
 
     if ([clazz respondsToSelector:selector]) {
@@ -159,6 +159,9 @@ DYCModularManager *instance = nil;
         id paramValue = param[paramName];
         NSUInteger index = idx + 2;
         id formatValue = [obj formatValue:paramValue];
+        if (!formatValue) {
+            return;
+        }
         [invoke setArgument:(void *)formatValue atIndex:index];
         
     }];
