@@ -13,9 +13,17 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *moduleName;
 @property (nonatomic, readonly) NSArray<DYCProtocol *>* protocolList;
 @property (nonatomic, copy) NSString *clazzName;
+//初始化
++ (DYCModule *(^)(void))create;
++ (DYCModule *)creator;
 
+//设置模块名称
+- (DYCModule * (^)(NSString *))name;
 - (DYCModule *)name:(NSString *)name;
 
+
+//设置模块协议,调用一次添加一个协议
+- (DYCModule * (^)(DYCProtocol *))protocol;
 - (DYCModule *)protocol:(DYCProtocol *)protocol;
 @end
 

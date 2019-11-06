@@ -9,6 +9,40 @@
 
 @implementation DYCParam
 
++ (DYCParam *(^)(void))create {
+    return ^DYCParam* (void) {
+        return [[DYCParam alloc] init];
+    };
+}
+
++ (DYCParam *)creator {
+    return self.create();
+}
+
+
+- (DYCParam *(^)(NSString *))name {
+    return ^DYCParam* (NSString *name) {
+        NSParameterAssert(name);
+        self.paramName = name;
+        return self;
+    };
+}
+
+- (DYCParam *)name:(NSString *)name {
+    return self.name(name);
+}
+
+- (DYCParam *(^)(DYCParamType))type {
+    return ^DYCParam* (DYCParamType type) {
+        self.paramType = type;
+        return self;
+    };
+}
+
+- (DYCParam *)type:(DYCParamType)type {
+    return self.type(type);
+}
+
 - (id)formatValue:(id)value {
     switch (self.type) {
         case DYCParamTypeNone:

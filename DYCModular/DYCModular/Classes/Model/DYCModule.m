@@ -11,8 +11,7 @@
 
 @end
 @implementation DYCModule
-
-- (NSArray<DYCProtocol *> *)protocols {
+- (NSMutableArray<DYCProtocol *> *)protocols {
     if (!_protocols) {
         _protocols = [[NSMutableArray alloc] init];
     }
@@ -21,6 +20,16 @@
 
 - (NSArray<DYCProtocol *> *)protocolList {
     return [self.protocolList copy];
+}
+
++ (DYCModule *(^)(void))create {
+    return ^DYCModule* (void){
+        return [[DYCModule alloc] init];
+    };
+}
+
++ (DYCModule *)creator {
+    return self.create();
 }
 
 - (DYCModule * (^)(NSString *))name {
