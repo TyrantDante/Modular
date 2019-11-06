@@ -7,7 +7,7 @@
 //
 
 #import "DYCViewController.h"
-
+#import <DYCModular.h>
 @interface DYCViewController ()
 
 @end

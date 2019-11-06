@@ -9,16 +9,16 @@
 /* Begin PBXBuildFile section */
 		224894004D9E11A3E527EB170C2F4B43 /* Pods-DYCModular_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B22B914EC7BEB38B109104719B2081E8 /* Pods-DYCModular_Tests-dummy.m */; };
 		5FB503B016A54A40BEFEB18363D33B76 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
-		64BA6EA7236C113200651252 /* DYCModule.h in Headers */ = {isa = PBXBuildFile; fileRef = 64BA6EA5236C113200651252 /* DYCModule.h */; };
-		64BA6EA8236C113200651252 /* DYCModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 64BA6EA6236C113200651252 /* DYCModule.m */; };
-		64F5C648236ACB16002F02F6 /* DYCProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 64F5C646236ACB16002F02F6 /* DYCProtocol.h */; };
-		64F5C649236ACB16002F02F6 /* DYCProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 64F5C647236ACB16002F02F6 /* DYCProtocol.m */; };
-		64F5C64C236ACBBE002F02F6 /* DYCParam.h in Headers */ = {isa = PBXBuildFile; fileRef = 64F5C64A236ACBBE002F02F6 /* DYCParam.h */; };
-		64F5C64D236ACBBE002F02F6 /* DYCParam.m in Sources */ = {isa = PBXBuildFile; fileRef = 64F5C64B236ACBBE002F02F6 /* DYCParam.m */; };
-		64F5C650236ADE3B002F02F6 /* DYCURL.h in Headers */ = {isa = PBXBuildFile; fileRef = 64F5C64E236ADE3B002F02F6 /* DYCURL.h */; };
-		64F5C651236ADE3B002F02F6 /* DYCURL.m in Sources */ = {isa = PBXBuildFile; fileRef = 64F5C64F236ADE3B002F02F6 /* DYCURL.m */; };
-		64FA2E49236BDCBE00BB83B8 /* DYCModular.m in Sources */ = {isa = PBXBuildFile; fileRef = 64FA2E47236BDCBE00BB83B8 /* DYCModular.m */; };
-		64FA2E4A236BDCBE00BB83B8 /* DYCModular.h in Headers */ = {isa = PBXBuildFile; fileRef = 64FA2E48236BDCBE00BB83B8 /* DYCModular.h */; };
+		64D847EC2372B77B00CD23B2 /* DYCModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 64D847E02372B77B00CD23B2 /* DYCModule.m */; };
+		64D847ED2372B77B00CD23B2 /* DYCParam.h in Headers */ = {isa = PBXBuildFile; fileRef = 64D847E12372B77B00CD23B2 /* DYCParam.h */; };
+		64D847EE2372B77B00CD23B2 /* DYCProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 64D847E22372B77B00CD23B2 /* DYCProtocol.m */; };
+		64D847EF2372B77B00CD23B2 /* DYCURL.h in Headers */ = {isa = PBXBuildFile; fileRef = 64D847E32372B77B00CD23B2 /* DYCURL.h */; };
+		64D847F02372B77B00CD23B2 /* DYCParam.m in Sources */ = {isa = PBXBuildFile; fileRef = 64D847E42372B77B00CD23B2 /* DYCParam.m */; };
+		64D847F12372B77B00CD23B2 /* DYCModule.h in Headers */ = {isa = PBXBuildFile; fileRef = 64D847E52372B77B00CD23B2 /* DYCModule.h */; };
+		64D847F22372B77B00CD23B2 /* DYCProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 64D847E62372B77B00CD23B2 /* DYCProtocol.h */; };
+		64D847F32372B77B00CD23B2 /* DYCURL.m in Sources */ = {isa = PBXBuildFile; fileRef = 64D847E72372B77B00CD23B2 /* DYCURL.m */; };
+		64D847F42372B77B00CD23B2 /* DYCModular.m in Sources */ = {isa = PBXBuildFile; fileRef = 64D847E92372B77B00CD23B2 /* DYCModular.m */; };
+		64D847F52372B77B00CD23B2 /* DYCModular.h in Headers */ = {isa = PBXBuildFile; fileRef = 64D847EA2372B77B00CD23B2 /* DYCModular.h */; };
 		79E6B3B12FE877CDCEA127574A4876EA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
 		99A68F2A6A3380B0DF87DAF51A822035 /* DYCModular-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 52445F76B14D56D8E1F5129ACE2C6770 /* DYCModular-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA1220E2E07A0720D2C81798656F1819 /* Pods-DYCModular_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 4DE331DB8C83239AC00397339C3A2423 /* Pods-DYCModular_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -57,16 +57,16 @@
 		52445F76B14D56D8E1F5129ACE2C6770 /* DYCModular-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "DYCModular-umbrella.h"; sourceTree = "<group>"; };
 		5D64357EA2320ED648969086DF64845D /* Pods-DYCModular_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-DYCModular_Example.modulemap"; sourceTree = "<group>"; };
 		6131BA2B7DC31FB070C8242BE4E22DE2 /* Pods-DYCModular_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-DYCModular_Example-acknowledgements.plist"; sourceTree = "<group>"; };
-		64BA6EA5236C113200651252 /* DYCModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DYCModule.h; sourceTree = "<group>"; };
-		64BA6EA6236C113200651252 /* DYCModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DYCModule.m; sourceTree = "<group>"; };
-		64F5C646236ACB16002F02F6 /* DYCProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DYCProtocol.h; sourceTree = "<group>"; };
-		64F5C647236ACB16002F02F6 /* DYCProtocol.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DYCProtocol.m; sourceTree = "<group>"; };
-		64F5C64A236ACBBE002F02F6 /* DYCParam.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DYCParam.h; sourceTree = "<group>"; };
-		64F5C64B236ACBBE002F02F6 /* DYCParam.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DYCParam.m; sourceTree = "<group>"; };
-		64F5C64E236ADE3B002F02F6 /* DYCURL.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DYCURL.h; sourceTree = "<group>"; };
-		64F5C64F236ADE3B002F02F6 /* DYCURL.m */ = {isa = PBXFileReference; indentWidth = 3; lastKnownFileType = sourcecode.c.objc; path = DYCURL.m; sourceTree = "<group>"; };
-		64FA2E47236BDCBE00BB83B8 /* DYCModular.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DYCModular.m; sourceTree = "<group>"; };
-		64FA2E48236BDCBE00BB83B8 /* DYCModular.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DYCModular.h; sourceTree = "<group>"; };
+		64D847E02372B77B00CD23B2 /* DYCModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DYCModule.m; sourceTree = "<group>"; };
+		64D847E12372B77B00CD23B2 /* DYCParam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DYCParam.h; sourceTree = "<group>"; };
+		64D847E22372B77B00CD23B2 /* DYCProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DYCProtocol.m; sourceTree = "<group>"; };
+		64D847E32372B77B00CD23B2 /* DYCURL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DYCURL.h; sourceTree = "<group>"; };
+		64D847E42372B77B00CD23B2 /* DYCParam.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DYCParam.m; sourceTree = "<group>"; };
+		64D847E52372B77B00CD23B2 /* DYCModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DYCModule.h; sourceTree = "<group>"; };
+		64D847E62372B77B00CD23B2 /* DYCProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DYCProtocol.h; sourceTree = "<group>"; };
+		64D847E72372B77B00CD23B2 /* DYCURL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DYCURL.m; sourceTree = "<group>"; };
+		64D847E92372B77B00CD23B2 /* DYCModular.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DYCModular.m; sourceTree = "<group>"; };
+		64D847EA2372B77B00CD23B2 /* DYCModular.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DYCModular.h; sourceTree = "<group>"; };
 		6A8F2CB6135D2561700053BB333AC352 /* Pods-DYCModular_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-DYCModular_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
 		6E4575DEFF71084C3A1392B22E3D0C53 /* Pods-DYCModular_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-DYCModular_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		79B6E75FFAB9B08ACAACDFD6C95BF5AA /* Pods-DYCModular_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-DYCModular_Example-Info.plist"; sourceTree = "<group>"; };
@@ -79,12 +79,9 @@
 		AFF35E962F0A415DC3A44D82885E5214 /* Pods-DYCModular_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-DYCModular_Example-frameworks.sh"; sourceTree = "<group>"; };
 		B22B914EC7BEB38B109104719B2081E8 /* Pods-DYCModular_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-DYCModular_Tests-dummy.m"; sourceTree = "<group>"; };
 		B4205A7CE13CC26C2AB9D00A559AB0AD /* Pods-DYCModular_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-DYCModular_Tests.modulemap"; sourceTree = "<group>"; };
-		B7D3EC0F3DDA52D13EAAAE305372F2C9 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		B8352FA5D51EEF1A8FB1FDDCE2A87B9F /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		CD3A20A96363F543A590AE6462817A15 /* Pods-DYCModular_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-DYCModular_Example-dummy.m"; sourceTree = "<group>"; };
 		CE16E74253C45DDCB8C2AEE33F19AC96 /* DYCModular-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "DYCModular-Info.plist"; sourceTree = "<group>"; };
 		D6BC0069017F8B82757AC3F98B02D458 /* Pods_DYCModular_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DYCModular_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		DDF4A3B3EEE837F79F99EECB73D9345D /* DYCModular.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = DYCModular.podspec; sourceTree = "<group>"; tabWidth = 2; };
 		EA2071BDA887C44E18167DC851452937 /* Pods-DYCModular_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-DYCModular_Example.release.xcconfig"; sourceTree = "<group>"; };
 		EFA2F78D5F6AB732605EF2694055D9B0 /* DYCModular-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "DYCModular-dummy.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -134,52 +131,48 @@
 			path = "Target Support Files/Pods-DYCModular_Example";
 			sourceTree = "<group>";
 		};
-		64F5C645236ACB0B002F02F6 /* Model */ = {
+		64D847DD2372B77B00CD23B2 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				64F5C646236ACB16002F02F6 /* DYCProtocol.h */,
-				64F5C647236ACB16002F02F6 /* DYCProtocol.m */,
-				64F5C64A236ACBBE002F02F6 /* DYCParam.h */,
-				64F5C64B236ACBBE002F02F6 /* DYCParam.m */,
-				64F5C64E236ADE3B002F02F6 /* DYCURL.h */,
-				64F5C64F236ADE3B002F02F6 /* DYCURL.m */,
-				64BA6EA5236C113200651252 /* DYCModule.h */,
-				64BA6EA6236C113200651252 /* DYCModule.m */,
+				64D847DF2372B77B00CD23B2 /* Model */,
+				64D847E82372B77B00CD23B2 /* Modular */,
 			);
-			name = Model;
-			path = DYCModular/Classes/Model;
+			name = Classes;
+			path = DYCModular/Classes;
 			sourceTree = "<group>";
 		};
-		64FA2E46236BDCBE00BB83B8 /* Modular */ = {
+		64D847DF2372B77B00CD23B2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				64FA2E48236BDCBE00BB83B8 /* DYCModular.h */,
-				64FA2E47236BDCBE00BB83B8 /* DYCModular.m */,
+				64D847E02372B77B00CD23B2 /* DYCModule.m */,
+				64D847E12372B77B00CD23B2 /* DYCParam.h */,
+				64D847E22372B77B00CD23B2 /* DYCProtocol.m */,
+				64D847E32372B77B00CD23B2 /* DYCURL.h */,
+				64D847E42372B77B00CD23B2 /* DYCParam.m */,
+				64D847E52372B77B00CD23B2 /* DYCModule.h */,
+				64D847E62372B77B00CD23B2 /* DYCProtocol.h */,
+				64D847E72372B77B00CD23B2 /* DYCURL.m */,
 			);
-			name = Modular;
-			path = DYCModular/Classes/Modular;
+			path = Model;
+			sourceTree = "<group>";
+		};
+		64D847E82372B77B00CD23B2 /* Modular */ = {
+			isa = PBXGroup;
+			children = (
+				64D847E92372B77B00CD23B2 /* DYCModular.m */,
+				64D847EA2372B77B00CD23B2 /* DYCModular.h */,
+			);
+			path = Modular;
 			sourceTree = "<group>";
 		};
 		651F2B50C6D6DF734554B24081E64D99 /* DYCModular */ = {
 			isa = PBXGroup;
 			children = (
-				9130B87947B5E0E256B19F87EDBDA1B1 /* Pod */,
+				64D847DD2372B77B00CD23B2 /* Classes */,
 				E6B1A69A7748103F8428612DE5A9B1F7 /* Support Files */,
 			);
 			name = DYCModular;
 			path = ../..;
-			sourceTree = "<group>";
-		};
-		9130B87947B5E0E256B19F87EDBDA1B1 /* Pod */ = {
-			isa = PBXGroup;
-			children = (
-				64FA2E46236BDCBE00BB83B8 /* Modular */,
-				64F5C645236ACB0B002F02F6 /* Model */,
-				DDF4A3B3EEE837F79F99EECB73D9345D /* DYCModular.podspec */,
-				B7D3EC0F3DDA52D13EAAAE305372F2C9 /* LICENSE */,
-				B8352FA5D51EEF1A8FB1FDDCE2A87B9F /* README.md */,
-			);
-			name = Pod;
 			sourceTree = "<group>";
 		};
 		BB0089933ED354E3442E4ABFAA9E1875 /* Pods-DYCModular_Tests */ = {
@@ -281,12 +274,12 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				64FA2E4A236BDCBE00BB83B8 /* DYCModular.h in Headers */,
-				64F5C64C236ACBBE002F02F6 /* DYCParam.h in Headers */,
-				64F5C650236ADE3B002F02F6 /* DYCURL.h in Headers */,
-				64F5C648236ACB16002F02F6 /* DYCProtocol.h in Headers */,
 				99A68F2A6A3380B0DF87DAF51A822035 /* DYCModular-umbrella.h in Headers */,
-				64BA6EA7236C113200651252 /* DYCModule.h in Headers */,
+				64D847F22372B77B00CD23B2 /* DYCProtocol.h in Headers */,
+				64D847F52372B77B00CD23B2 /* DYCModular.h in Headers */,
+				64D847EF2372B77B00CD23B2 /* DYCURL.h in Headers */,
+				64D847ED2372B77B00CD23B2 /* DYCParam.h in Headers */,
+				64D847F12372B77B00CD23B2 /* DYCModule.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -422,12 +415,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				64FA2E49236BDCBE00BB83B8 /* DYCModular.m in Sources */,
+				64D847EE2372B77B00CD23B2 /* DYCProtocol.m in Sources */,
+				64D847F32372B77B00CD23B2 /* DYCURL.m in Sources */,
+				64D847EC2372B77B00CD23B2 /* DYCModule.m in Sources */,
+				64D847F42372B77B00CD23B2 /* DYCModular.m in Sources */,
+				64D847F02372B77B00CD23B2 /* DYCParam.m in Sources */,
 				FF5A8D79B3D390293D6B98A44A21D7AE /* DYCModular-dummy.m in Sources */,
-				64BA6EA8236C113200651252 /* DYCModule.m in Sources */,
-				64F5C64D236ACBBE002F02F6 /* DYCParam.m in Sources */,
-				64F5C651236ADE3B002F02F6 /* DYCURL.m in Sources */,
-				64F5C649236ACB16002F02F6 /* DYCProtocol.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -44,7 +44,7 @@
 }
 
 - (id)formatValue:(id)value {
-    switch (self.type) {
+    switch (self.paramType) {
         case DYCParamTypeNone:
             return value;
         case DYCParamTypeString:

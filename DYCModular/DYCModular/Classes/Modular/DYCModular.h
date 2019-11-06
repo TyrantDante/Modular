@@ -6,9 +6,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "DYCModule.h"
 NS_ASSUME_NONNULL_BEGIN
 
-@class DYCModule;
 @protocol DYCModuleProtocol <NSObject>
 
 + (DYCModule *)exportModule;

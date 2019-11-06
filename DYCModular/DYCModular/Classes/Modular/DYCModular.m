@@ -33,7 +33,7 @@ DYCModularManager *instance = nil;
     if (self = [super init]) {
         _moduleMap = [[NSMutableDictionary alloc] init];
         pthread_rwlockattr_t arr;
-        pthread_rwlock_init(&_rw_lock, pthread_attr_init(&arr));
+        pthread_rwlock_init(&_rw_lock, pthread_rwlockattr_init(&arr));
     }
     return self;
 }
@@ -93,9 +93,29 @@ DYCModularManager *instance = nil;
     if (![self.avaliableSchemes.allKeys containsObject:url.scheme]) {
         return nil;
     }
+    NSArray<NSString *> *module_names = url.module_names;
+    NSString *module_method = url.module_method;
+    NSDictionary *module_param = params;
     
-    
-    return nil;
+    NSMutableArray *result = [NSMutableArray array];
+    for (NSString *module_name in module_names) {
+        DYCModule *module = [self getModule:module_name];
+        if (module) {
+            for (DYCProtocol *protocoo in module.protocolList) {
+                if ([protocoo.function isEqualToString:module_method]) {
+                    if (protocoo.clazzName.length == 0) {
+                        protocoo.clazzName = module.clazzName;
+                    }
+                    id rr = [self openModuleWithProtocol:protocoo param:module_param];
+                    if (rr) {
+                        [result addObject:rr];
+                    }
+                }
+            }
+        }
+    }
+
+    return result;
 }
 
 - (id)openModuleWithUrlString:(NSString *)urlString {
@@ -107,18 +127,18 @@ DYCModularManager *instance = nil;
     NSString *module_method = url.module_method;
     NSDictionary *module_param = url.module_param;
     
-    NSMutableDictionary *result = [NSMutableDictionary dictionary];
+    NSMutableArray *result = [NSMutableArray array];
     for (NSString *module_name in module_names) {
         DYCModule *module = [self getModule:module_name];
         if (module) {
-            for (DYCProtocol *protocoo in module.protocols) {
+            for (DYCProtocol *protocoo in module.protocolList) {
                 if ([protocoo.function isEqualToString:module_method]) {
                     if (protocoo.clazzName.length == 0) {
                         protocoo.clazzName = module.clazzName;
                     }
                     id rr = [self openModuleWithProtocol:protocoo param:module_param];
                     if (rr) {
-                        [result setValue:rr forKey:urlString];
+                        [result addObject:rr];
                     }
                 }
             }
@@ -131,7 +151,7 @@ DYCModularManager *instance = nil;
 
 - (id)openModuleWithProtocol:(DYCProtocol *)protocol param:(NSDictionary *)param {
     Class clazz = NSClassFromString(protocol.clazzName);
-    SEL selector = protocol.selector;
+    SEL selector = protocol.protocolSelector;
     NSMethodSignature *sig;
 
     if ([clazz respondsToSelector:selector]) {
@@ -151,8 +171,8 @@ DYCModularManager *instance = nil;
         id module = [[clazz alloc] init];
         invoke.target = module;
     }
-    [protocol.params enumerateObjectsUsingBlock:^(DYCParam * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        NSString *paramName = obj.name;
+    [protocol.paramList enumerateObjectsUsingBlock:^(DYCParam * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        NSString *paramName = obj.paramName;
         if (paramName.length == 0) {
             return;
         }
