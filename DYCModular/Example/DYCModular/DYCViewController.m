@@ -18,12 +18,25 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    [[DYCModularManager shareInstance] addSchemes:@[@"dyc"]];
+    UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(0, 100, 100, 50)];
+    [button setTitle:@"点我试试" forState:UIControlStateNormal];
+    [button setTitleColor:UIColor.blueColor forState:UIControlStateNormal];
+    [self.view addSubview:button];
+    [button addTarget:self action:@selector(click) forControlEvents:UIControlEventTouchUpInside];
+    
+}
+
+- (void)click {
+    id result = [[DYCModularManager shareInstance] openModuleWithPath:@"dyc://func/test" params:@{@"param1":@"我是第一个参数",@"param2":@"我是第二个参数"}];
+    NSLog(@"result is %@",result);
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+   
 }
 
 - (NSString *)testFunction:(NSString *)param1 param2:(NSString *)param2 {

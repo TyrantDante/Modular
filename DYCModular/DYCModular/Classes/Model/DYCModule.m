@@ -19,7 +19,7 @@
 }
 
 - (NSArray<DYCProtocol *> *)protocolList {
-    return [self.protocolList copy];
+    return [self.protocols copy];
 }
 
 + (DYCModule *(^)(void))create {

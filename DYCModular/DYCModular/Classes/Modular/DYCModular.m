@@ -31,18 +31,32 @@ DYCModularManager *instance = nil;
 
 - (instancetype)init {
     if (self = [super init]) {
-        _moduleMap = [[NSMutableDictionary alloc] init];
         pthread_rwlockattr_t arr;
         pthread_rwlock_init(&_rw_lock, pthread_rwlockattr_init(&arr));
+        [self staticSearchProtocol];
     }
     return self;
 }
 
+- (NSMutableDictionary *)moduleMap {
+    if (!_moduleMap) {
+        _moduleMap = [[NSMutableDictionary alloc] init];
+    }
+    return _moduleMap;
+}
+
+- (NSMutableDictionary *)avaliableSchemes {
+    if (!_avaliableSchemes) {
+        _avaliableSchemes = [[NSMutableDictionary alloc] init];
+    }
+    return _avaliableSchemes;
+}
+
 - (void)addModule:(DYCModule *)module {
     pthread_rwlock_wrlock(&_rw_lock);
-    NSAssert([self.moduleMap.allKeys containsObject:module.moduleName], @"不能多次添加同一个module");
+    NSAssert(![self.moduleMap.allKeys containsObject:module.moduleName], @"不能多次添加同一个module");
     
-    NSAssert(module.moduleName.length == 0, @"moduleName 不能为空");
+    NSAssert(module.moduleName.length != 0, @"moduleName 不能为空");
     
     [self.moduleMap setValue:module forKey:module.moduleName];
     
@@ -51,7 +65,7 @@ DYCModularManager *instance = nil;
 
 - (DYCModule *)getModule:(NSString *)moduleName {
     pthread_rwlock_rdlock(&_rw_lock);
-    NSAssert(moduleName.length == 0, @"moduleName 不能为空");
+    NSAssert(moduleName.length != 0, @"moduleName 不能为空");
     DYCModule *module = self.moduleMap[moduleName];
     pthread_rwlock_unlock(&_rw_lock);
     return module;
@@ -102,7 +116,7 @@ DYCModularManager *instance = nil;
         DYCModule *module = [self getModule:module_name];
         if (module) {
             for (DYCProtocol *protocoo in module.protocolList) {
-                if ([protocoo.function isEqualToString:module_method]) {
+                if ([protocoo.protocolFunction isEqualToString:module_method]) {
                     if (protocoo.clazzName.length == 0) {
                         protocoo.clazzName = module.clazzName;
                     }
@@ -132,7 +146,7 @@ DYCModularManager *instance = nil;
         DYCModule *module = [self getModule:module_name];
         if (module) {
             for (DYCProtocol *protocoo in module.protocolList) {
-                if ([protocoo.function isEqualToString:module_method]) {
+                if ([protocoo.protocolFunction isEqualToString:module_method]) {
                     if (protocoo.clazzName.length == 0) {
                         protocoo.clazzName = module.clazzName;
                     }
@@ -163,7 +177,7 @@ DYCModularManager *instance = nil;
     } else {
         return nil;
     }
-    NSInvocation *invoke = [[NSInvocation alloc] init];
+    NSInvocation *invoke = [NSInvocation invocationWithMethodSignature:sig];
     invoke.selector = selector;
     if (protocol.isClazzMethod) {
         invoke.target = clazz;
@@ -171,21 +185,25 @@ DYCModularManager *instance = nil;
         id module = [[clazz alloc] init];
         invoke.target = module;
     }
-    [protocol.paramList enumerateObjectsUsingBlock:^(DYCParam * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        NSString *paramName = obj.paramName;
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wincompatible-pointer-types"
+    NSArray<DYCParam *> *params = protocol.paramList;
+    NSUInteger index = 1;
+    for (DYCParam *param_ in params) {
+        NSString *paramName = param_.paramName;
+        index = index + 1;
         if (paramName.length == 0) {
-            return;
+            continue;
         }
         id paramValue = param[paramName];
-        NSUInteger index = idx + 2;
-        id formatValue = [obj formatValue:paramValue];
+        id formatValue = [param_ formatValue:paramValue];
         if (!formatValue) {
-            return;
+            continue;
         }
-        [invoke setArgument:(void *)formatValue atIndex:index];
-        
-    }];
-    
+        [invoke setArgument:&formatValue atIndex:index];
+    }
+#pragma clang diagnostic pop
+
     [invoke retainArguments];
     [invoke invoke];
 
@@ -194,7 +212,7 @@ DYCModularManager *instance = nil;
     if (length == 0) {
         return nil;
     }
-    if ([type isEqualToString:@"@"]) {
+    if (![type isEqualToString:@"@"]) {
         return nil;
     }
     void *buffer;
